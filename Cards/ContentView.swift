@@ -100,10 +100,11 @@ struct GameGridView: View {
                                 .foregroundColor(.red)
                         }
                     }
-                if gameObject().gameWon() == true{
-                    WinView()
                 }
+            if gameObject().gameWon() == true{
+                WinView()
             }
+            
         }else{
             if CardSet.shared.gameStarted == false{
                 ZStack{
