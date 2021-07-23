@@ -19,10 +19,18 @@ class gameObject: ObservableObject{
         //cardSet = Array<Card>()
         cardSet = setcards()
     }
+    let cardDecks:[String] = ["moji", "vizsla", "cat"]
+    var cardDeck = "moji"
     
     func setcards() -> [Card]{
         //print("setcardscard")
-        let cardnames:[String] = ["😀","🙎🏼","🧚🏼‍♀️","🦑","🦜","🐃","🦔","🦐","🐠"]
+        var cardnames:[String] = []
+        if cardDeck == "moji"{
+            cardnames = ["😀","🙎🏼","🧚🏼‍♀️","🦑","🦜","🐃","🦔","🦐","🐠"]
+        }
+        if cardDeck == "vizsla"{
+            cardnames = ["IMG_0504"]
+        }
         var newcard = Card()
         var newcardMatch = Card()
         var newcardSet = [Card]()//
