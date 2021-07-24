@@ -17,20 +17,31 @@ class gameObject: ObservableObject{
     
     init(){
         //cardSet = Array<Card>()
-        cardSet = setcards()
+        //cardSet = setcards()
     }
     let cardDecks:[String] = ["moji", "vizsla", "cat"]
-    var cardDeck = "moji"
+    let cardCount:[String] = ["5","10","20","30"]
     
     func setcards() -> [Card]{
         //print("setcardscard")
+        print("CardDeck set to:", CardSet.shared.cardDeck)
+        print("Number of cards set to:", CardSet.shared.numberOfCardsToPlay)
         var cardnames:[String] = []
-        if cardDeck == "moji"{
-            cardnames = ["😀","🙎🏼","🧚🏼‍♀️","🦑","🦜","🐃","🦔","🦐","🐠"]
+        if CardSet.shared.cardDeck == "moji"{
+            let cardMojiSet = ["😀","🙎🏼","🧚🏼‍♀️","🦑","🦜","🐃","🦔","🦐","🐠","🐯","🐼","🦖","🦬","🦥","🦦","🦫","🦡","🦩","🐉","🦍","🦒","🦧","🦣","🦈","🐊","🐅","🦂","🐌"]
+            CardSet.shared.cardImages = false
+            for i in 0...CardSet.shared.numberOfCardsToPlay - 1{
+                cardnames.append(cardMojiSet[i])
+            }
         }
-        if cardDeck == "vizsla"{
-            cardnames = ["IMG_0504"]
+        if CardSet.shared.cardDeck == "vizsla"{
+            let VizslaSet = ["IMG_0504", "IMG_1805","IMG_1959","IMG_8953","IMG_9575"]
+            CardSet.shared.cardImages = true
+            for i in 0...CardSet.shared.numberOfCardsToPlay - 1{
+                cardnames.append(VizslaSet[i])
+            }
         }
+        print("Cardnames are:",cardnames)
         var newcard = Card()
         var newcardMatch = Card()
         var newcardSet = [Card]()//

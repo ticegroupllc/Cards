@@ -10,10 +10,10 @@ import SwiftUI
 struct StartGameView: View {
     @State var gameStarted:Bool = CardSet.shared.gameStarted
     @State var showGreeting:Bool = true
-    var cardCount = ["10","20","30"]
-    var colors = ["moji", "Vizsla", "Cats", "Flowers"]
-    @State private var selectedColor = "Red"
-    @State private var selectedNumberofCards = 10
+    var cardCount = gameObject.shared.cardCount
+    var colors = gameObject.shared.cardDecks
+    @State private var selectedColor = gameObject.shared.cardDecks[1]
+    @State private var selectedNumberofCards = gameObject.shared.cardCount[1]
     var body: some View {
         VStack{
             Spacer()
@@ -51,6 +51,7 @@ struct StartGameView: View {
                                     }
                                 }.frame(width: 50, height: 100, alignment: .center)
                                 Text("You selected: \(selectedColor)")
+                        
                             }
                 }
             }
@@ -60,6 +61,10 @@ struct StartGameView: View {
                     .fill(Color.yellow)
                     .frame(width: 300, height: 100)
                 Button(action: {
+                    CardSet.shared.cardDeck = selectedColor
+                    
+                    CardSet.shared.numberOfCardsToPlay = Int(selectedNumberofCards) ?? 0
+                    gameObject().setcards()
                     gameObject().startGame()
                     gameStarted.toggle()
                 }){

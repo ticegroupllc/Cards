@@ -14,6 +14,7 @@ struct Card:Identifiable{
     var seq: Int!
     var matched:Bool = false
     var match: Int!
+    //var image:String
 }
 /*
 class Card:Identifiable, ObservableObject{
@@ -37,7 +38,9 @@ class CardSet: ObservableObject{
     var gameStarted:Bool = false
     var score:Int = 0
     var countdown:String = ""
-    
+    var cardDeck:String = ""
+    var numberOfCardsToPlay:Int = 0
+    var cardImages:Bool = false
     }
     
 
